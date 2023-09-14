@@ -1,0 +1,1 @@
+print("this is the right way to do this coding stuff")
