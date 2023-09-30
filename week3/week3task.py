@@ -14,8 +14,10 @@ window.geometry("1300x650")
 
 kernesti_image=Image.open('kernesti.png')
 kernesti_photo=ImageTk.PhotoImage(kernesti_image)
+
 target_image=Image.open('maalitaulu.png')
 target_photo=ImageTk.PhotoImage(target_image)
+
 tomato_image=Image.open('tomaatti.png')
 tomato_photo=ImageTk.PhotoImage(tomato_image)
 
