@@ -8,7 +8,7 @@ import threading
 ikkuna=tk.Tk()
 ikkuna.title("Exercise 8")
 ikkuna.geometry("700x700")
-ikkuna.configure(bg="blue")
+ikkuna.configure(bg="CornflowerBlue")
 # Disable window resizing
 ikkuna.resizable(False, False)
 # add five buttons to the top line of the window
