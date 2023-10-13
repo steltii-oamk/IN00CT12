@@ -31,37 +31,24 @@ def i_suppose_i_have_earned_so_much_points(amount_of_points):
 # Example:
 i_suppose_i_have_earned_so_much_points(0)
 
-monkey_items = [] # Store monkey canvas items
-monkey_schedule = None # Variable to store the monkey sound schedule
+#monkey_items = [] # Store monkey canvas items
+#monkey_schedule = None # Variable to store the monkey sound schedule
 
 # define island size and collision range
 island_x = 60
 island_y = 60
 island_collision_x = island_x + 10
 island_collision_y = island_y + 10
-monkey_x=2
-monkey_y=2
+monkey_x=0
+monkey_y=0
 
 def add_monkey(x, y):
     monkey = tk.Canvas(ikkuna, width=monkey_x, height=monkey_y, bg="brown", highlightbackground="brown")
     monkey.place(x=x, y=y)
-    monkey_items.append(monkey)
+    #monkey_items.append(monkey)
     # Play a sound for the monkey
     frequency = random.randint(200, 1000)
     winsound.Beep(frequency, 200)
-    # Schedule to play the sound every 10 seconds
-    if monkey_schedule is not None:
-        monkey_schedule = ikkuna.after(10000, add_monkey, x, y)
-
-def stop_monkey_schedule():
-    global monkey_schedule
-    if monkey_schedule is not None:
-        ikkuna.after_cancel(monkey_schedule)
-
-def remove_monkeys():
-    for monkey in monkey_items:
-        monkey.destroy()
-    monkey_items.clear()
 
 def new_island():
     island = tk.Canvas(ikkuna, width=island_x, height=island_y, bg="sandybrown", highlightbackground="sandybrown")
@@ -85,17 +72,15 @@ def new_island():
             break
 
 def island_thread():
-    global monkey_schedule
-    monkey_schedule = None
     thread_islands = threading.Thread(target=new_island)
     thread_islands.start()
+    #thread_monkeys = threading.Thread(target=add_monkey)
+    #thread_monkeys.start()
 
 def remove_islands():
     for widget in ikkuna.winfo_children():
         if isinstance(widget, tk.Canvas):
             widget.destroy()
-    remove_monkeys()  # Also clear the monkey instances
-    stop_monkey_schedule()
 
 btn_new_island=tk.Button(ikkuna,text="New island", command=island_thread, padx=5, pady=5)
 btn_new_island.place(x=25,y=650)
